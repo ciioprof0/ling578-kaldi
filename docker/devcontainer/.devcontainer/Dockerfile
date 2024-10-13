@@ -14,7 +14,7 @@ RUN if ! grep -Fxq "source /opt/kaldi/tools/env.sh" /opt/kaldi/egs/very/path.sh;
     fi
 
 # Modify r2.sh to set nj to nproc-1
-RUN sed -i 's/^nj=.*/nj=$(( $(nproc) - 1 ))/' /opt/kaldi/egs/very/r2.sh
+# RUN sed -i 's/^nj=.*/nj=$(( $(nproc) - 1 ))/' /opt/kaldi/egs/very/r2.sh
 
 # Copy your custom scripts into the container
 COPY mhscripts/ /mhscripts/
