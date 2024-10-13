@@ -1,7 +1,17 @@
 image:
-  file: .gitpod.Dockerfile
+  file: /docker/devcontainer/.devcontainer/Dockerfile
 
 tasks:
-  - init: echo "Replace me with a build script for the project."
-    command: echo "Replace me with something that should run on every start, or just
-      remove me entirely."
+  - name: Setup Kaldi + SRILM
+    init: |
+      # Make scripts executable
+      chmod +x /mhscripts/*.sh
+
+      # Run the setup script to install SRILM and configure Kaldi
+      /mhscripts/nb7_setup_kaldi.sh
+
+      # Optionally, you could remove the setup script here if it's no longer needed
+      # rm /mhscripts/nb7_setup_kaldi.sh
+    command: |
+      # After setup, keep the terminal open for further commands
+      bash
